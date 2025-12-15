@@ -1,0 +1,21 @@
+{
+  "name": "Web Push Demo",
+  "short_name": "PushDemo",
+  "start_url": "/login/index.php",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2b6cb0",
+  "icons": [
+    {
+      "src": "/login/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/login/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "gcm_sender_id": "103953800507"
+}

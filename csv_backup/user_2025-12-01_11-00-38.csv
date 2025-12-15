@@ -1,0 +1,6 @@
+id_user,username,password,nama,created_at
+6,goyeng,$2y$10$rOplJw75jVUzJ/WtryZR..zt7NmUANpvGfneQjClENlUuRHr16Ora,ayam,"2025-12-01 13:11:44"
+5,sofyan,827ccb0eea8a706c4c34a16891f84e7b,sofyan,"2025-11-22 22:03:18"
+4,reza,827ccb0eea8a706c4c34a16891f84e7b,"Reza Tri Kusuma","2025-11-14 21:21:57"
+3,12345,827ccb0eea8a706c4c34a16891f84e7b,administrator,"2025-11-09 16:26:38"
+1,admin,admin,,"2025-11-09 16:13:31"
