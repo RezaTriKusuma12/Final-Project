@@ -180,6 +180,10 @@ if (isset($_POST["username"])) {
             Belum punya akun? <a href="daftar.php">Daftar</a>
         </span>
 
+          <p style="text-align:center; margin-top:10px;">
+        <a href="lupa_password.php">Lupa Password?</a>
+      </p>
+
     </form>
 </div>
 
