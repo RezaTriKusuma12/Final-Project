@@ -1,15 +1,20 @@
 <?php
+date_default_timezone_set("Asia/Jakarta");
+
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 require "koneksi.php";
+
+// SET TIMEZONE MYSQL
+mysqli_query($koneksi, "SET time_zone = '+07:00'");
+
 require __DIR__ . "/vendor/autoload.php";
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+$dotenv->safeLoad(); // lebih aman untuk cron
 
-// ambil API key dari .env
 $API_KEY = $_ENV["OPENWEATHER_KEY"];
 
 
