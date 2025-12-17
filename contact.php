@@ -53,7 +53,7 @@ $team = [
         "IF24F",
         "if24.mohamadtriaji@mhs.ubpkarawang.ac.id",
         "0812-2540-0649",
-        "profile1.jpg"
+        "nijam.jpeg"
     ),
     new TeamMember(
         "Reza Tri Kusuma",
@@ -61,7 +61,7 @@ $team = [
         "IF24F",
         "if24.rezakusuma@mhs.ubpkarawang.ac.id",
         "0821-8580-3371",
-        "zoro.webp"
+        "reza.jpeg"
     ),
     new TeamMember(
         "Ferdiansyah Putra",
