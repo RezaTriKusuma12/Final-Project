@@ -2,48 +2,60 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-require __DIR__ . "/vendor/autoload.php";
+// if (php_sapi_name() !== 'cli') exit('Akses ditolak');
 
-use Dotenv\Dotenv;
+require "config.php";
+require "kirim_email.php";
 
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+// SET TIMEZONE MYSQL
+mysqli_query($koneksi, "SET time_zone = '+07:00'");
 
-// Ambil API KEY dari .env
-$apiKey = $_ENV["OPENWEATHER_KEY"] ?? null;
+// ===== AMBIL PM2.5 TERBARU DARI DATABASE =====
+$qUdara = mysqli_query(
+    $koneksi,
+    "SELECT kualitas_udara FROM data_udara ORDER BY timestamp DESC LIMIT 1"
+);
 
-if (!$apiKey) {
-    die("API Key tidak ditemukan. Pastikan file .env berisi OPENWEATHER_KEY=...");
+$dataUdara = mysqli_fetch_assoc($qUdara);
+if (!$dataUdara) {
+    die("Data PM2.5 belum tersedia");
 }
 
-$lat = -6.3239;
-$lon = 106.9896;
+$pm25 = $dataUdara["kualitas_udara"];
+$batas = 55;
 
-// URL API
-$url = "https://api.openweathermap.org/data/2.5/air_pollution?lat={$lat}&lon={$lon}&appid={$apiKey}";
+// ===== AMBIL STATUS TERAKHIR =====
+$qStatus = mysqli_query(
+    $koneksi,
+    "SELECT status FROM pm25_status WHERE id=1"
+);
+$statusRow = mysqli_fetch_assoc($qStatus);
+$statusTerakhir = $statusRow["status"] ?? "AMAN";
 
-// Ambil data dari API
-$response = @file_get_contents($url);
+// ===== LOGIKA STATUS (ANTI SPAM) =====
+if ($pm25 > $batas && $statusTerakhir === "AMAN") {
 
-if ($response === FALSE) {
-    die("Gagal mengambil data API OpenWeather. Kemungkinan API KEY salah atau tidak aktif.");
-}
+    // AMAN → BAHAYA
+    kirimEmailBahaya($pm25);
+    mysqli_query(
+        $koneksi,
+        "UPDATE pm25_status SET status='BAHAYA' WHERE id=1"
+    );
 
-$data = json_decode($response, true);
+    echo "EMAIL BAHAYA TERKIRIM | PM2.5: $pm25";
 
-// Validasi data
-if (!isset($data["list"][0]["components"]["pm2_5"])) {
-    die("Respons API tidak sesuai. Cek API Key atau koordinat.");
-}
+} elseif ($pm25 <= $batas && $statusTerakhir === "BAHAYA") {
 
-$pm25 = $data["list"][0]["components"]["pm2_5"];
+    // BAHAYA → AMAN
+    kirimEmailAman($pm25);
+    mysqli_query(
+        $koneksi,
+        "UPDATE pm25_status SET status='AMAN' WHERE id=1"
+    );
 
-echo "PM2.5 sekarang: " . $pm25 . "<br>";
+    echo "EMAIL AMAN TERKIRIM | PM2.5: $pm25";
 
-if ($pm25 > 55) {
-    echo "PM2.5 tinggi! Mengirim email...";
-// include kirim_email.php dll
 } else {
-    echo "PM2.5 masih aman. Tidak mengirim email.";
+
+    echo "STATUS TETAP: $statusTerakhir | PM2.5: $pm25";
 }
-?>
