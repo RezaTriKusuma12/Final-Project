@@ -57,12 +57,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             position: relative;
             background-color: rgba(255, 255, 255, 0.93);
             border-radius: 20px;
-            width: 380px;
+            width: 100%;
+            max-width: 380px; /* laptop */
             padding: 40px 35px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
             text-align: center;
             overflow: hidden;
         }
+
 
         .register-card::before {
             content: "";
@@ -117,6 +119,44 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         button:hover {
             background: #0056b3;
         }
+        
+        @media (max-width: 576px) {
+        body {
+            padding: 15px;
+        }
+
+        .register-card {
+            max-width: 95%;
+            padding: 25px 20px;
+        }
+
+        .register-card h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        table td {
+            padding: 4px;
+            font-size: 14px;
+        }
+
+        table input {
+            padding: 9px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+}
+
     </style>
 </head>
 
@@ -158,9 +198,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <tr>
                     <td></td>
                     <td>
-                        <button type="submit">Daftar User</button>
+                        <button type="submit">Daftar User</button><br>
+                        <div class="login-link">
                         <a href="login.php">Login</a>
+                        </div>
                     </td>
+
                 </tr>
             </table>
         </form>
