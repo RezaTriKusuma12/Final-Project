@@ -69,7 +69,7 @@ $team = [
         "IF24F",
         "if24.ferdiansyahputra@mhs.ubpkarawang.ac.id",
         "0895-3378-35072",
-        "profile3.jpg"
+        "ferdi.jpeg"
     ),
 ];
 
