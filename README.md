@@ -8,7 +8,7 @@ Pengguna dapat melihat:
 📊 Grafik riwayat
 🌤 Prediksi polusi
 📂 Export data halaman
-🔔 Notifikasi Web Push
+🔔 Notifikasi Via PHPMAILER
 
 Fitur Utama
 ✔ Realtime Dashboard
@@ -46,8 +46,7 @@ Teknologi yang digunakan
 - JavaScript
 - HTML+CSS
 - Leaflet.JS
-- ServiceWorker
-- VAPIDKEYS
+- Brevo key
 
 📄 Lisensi
 Proyek ini dibuat untuk keperluan pembelajaran dan tugas akhir. Bebas digunakan dan dikembangkan.
