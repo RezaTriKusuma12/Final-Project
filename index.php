@@ -56,14 +56,24 @@ class NotifikasiUdara {
                 break;
 
             case "Sedang":
-                $this->pesan = "Kualitas udara SEDANG. Tetap waspada ya.";
+                $this->pesan = "Kualitas udara SEDANG 🥺. Tetap waspada ya.";
                 $this->warna = "#fff3cd";
                 break;
 
             case "Tidak Sehat":
-                $this->pesan = "Kualitas udara TIDAK SEHAT. Gunakan masker dan kurangi aktivitas luar!";
+                $this->pesan = "Kualitas udara TIDAK SEHAT ⚠️. Gunakan masker dan kurangi aktivitas luar!";
                 $this->warna = "#f8d7da";
                 break;
+
+            case "Sangat Tidak Sehat":
+                $this->pesan = "Kualitas udara SANGAT TIDAK SEHAT 🚨. Gunakan masker dan kurangi aktivitas luar!";
+                $this->warna = "#f44336";
+                break; 
+                
+            case "Berbahaya ":
+                $this->pesan = "Kualitas udara BERBAHAYA 🚷. Gunakan masker dan kurangi aktivitas luar!";
+                $this->warna = "#9C27B0";
+                break;        
 
             default:
                 $this->pesan = "Status kualitas udara belum diketahui.";
