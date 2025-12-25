@@ -10,6 +10,7 @@ Pengguna dapat melihat:
 📂 Export data halaman
 🔔 Notifikasi Via PHPmailer ( email)
 
+
 Fitur Utama
 ✔ Realtime Dashboard
 Menampilkan PM2.5, suhu, kelembapan, dan waktu update terbaru.
@@ -47,6 +48,7 @@ Teknologi yang digunakan
 - HTML+CSS
 - Leaflet.JS
 - Brevo Key
+
 
 📄 Lisensi
 Proyek ini dibuat untuk keperluan pembelajaran dan tugas akhir. Bebas digunakan dan dikembangkan.
